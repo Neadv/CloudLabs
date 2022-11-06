@@ -1,0 +1,25 @@
+﻿@page
+@model lab1.Pages.AddNewBlobModel
+@{
+}
+
+<div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-6 card shadow">
+        <div class="card-body">
+            <h1 class="text-center card-title">Add New Blob</h1>
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="@Model.Name">Name:</label>
+                    <input class="form-control" type="text" required asp-for="@Model.Name" placeholder="Enter a blob name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="@Model.FormFile">Blob:</label>
+                    <input class="form-control" type="file" required asp-for="@Model.FormFile" placeholder="Select a file" />
+                </div>
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@page
+@model lab1.Pages.IndexModel
+@{
+    int counter = 1;
+}
+
+<div class="m-4 card shadow">
+    <div class="card-body">
+        <h1 class="card-title">Blob List:</h1>
+        <div class="d-flex justify-content-end my-2">
+            <a class="btn btn-primary" asp-page="AddNewBlob">Add New Blob</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @await foreach (var blobItem in Model.BlobItems)
+                {
+                    if (!blobItem.Deleted)
+                    {
+                        <tr>
+                            <td scope="row">@(counter++)</td>
+                            <td>@blobItem.Name</td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="name" value="@blobItem.Name">
+                                    <input type="submit" class="btn btn-danger btn-sm me-2" value="Delete" asp-page-handler="Delete" />
+                                    <input type="submit" class="btn btn-success btn-sm" value="Download" asp-page-handler="Download" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
